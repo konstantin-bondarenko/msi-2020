@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/github.io/chucks-jokes/static/css/main.692fedee.chunk.css",
+    "main.js": "/github.io/chucks-jokes/static/js/main.6ab7d06a.chunk.js",
+    "main.js.map": "/github.io/chucks-jokes/static/js/main.6ab7d06a.chunk.js.map",
+    "runtime-main.js": "/github.io/chucks-jokes/static/js/runtime-main.009cf885.js",
+    "runtime-main.js.map": "/github.io/chucks-jokes/static/js/runtime-main.009cf885.js.map",
+    "static/js/2.2b5f5cc9.chunk.js": "/github.io/chucks-jokes/static/js/2.2b5f5cc9.chunk.js",
+    "static/js/2.2b5f5cc9.chunk.js.map": "/github.io/chucks-jokes/static/js/2.2b5f5cc9.chunk.js.map",
+    "index.html": "/github.io/chucks-jokes/index.html",
+    "precache-manifest.af7184a0c2fa8cf32e03ef348c1570e5.js": "/github.io/chucks-jokes/precache-manifest.af7184a0c2fa8cf32e03ef348c1570e5.js",
+    "service-worker.js": "/github.io/chucks-jokes/service-worker.js",
+    "static/css/main.692fedee.chunk.css.map": "/github.io/chucks-jokes/static/css/main.692fedee.chunk.css.map",
+    "static/js/2.2b5f5cc9.chunk.js.LICENSE.txt": "/github.io/chucks-jokes/static/js/2.2b5f5cc9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.009cf885.js",
+    "static/js/2.2b5f5cc9.chunk.js",
+    "static/css/main.692fedee.chunk.css",
+    "static/js/main.6ab7d06a.chunk.js"
+  ]
+}
