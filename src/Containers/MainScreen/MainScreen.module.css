@@ -1,0 +1,46 @@
+.Main{
+    display: flex;
+    justify-content: space-between;
+    height: 1000px;
+}
+.Screen{
+    position: relative;
+    margin: 20px auto;
+}
+.Btn{
+    width: 150px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: rgb(49,141,210);
+    color: #fff;
+    outline: none;
+    font-size: 12px;
+    transition: .1s;
+}
+.Buttons{
+    height: 70px;
+}
+.Btn:active{
+    width: 148px;
+    height: 38px;
+}
+
+.Favorite{
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(245, 243, 243);
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+@media only screen and (max-width: 1024px){
+    .Main{
+        height: 100%;
+    }
+    .Favorite{
+        display: none;
+    }
+}
