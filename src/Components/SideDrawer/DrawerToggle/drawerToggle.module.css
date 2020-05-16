@@ -1,0 +1,43 @@
+.DrawerToggle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #000;
+    border-radius: 20px;
+    position: relative;
+}
+
+.DrawerToggle div{
+    width: 60%;
+    margin: 2px 0;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 1px;
+    outline: none;
+}
+
+.Left{
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease-in 0.2s;
+}
+.Right{
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease-in 0.2s;
+}
+
+@media (min-width: 1025px) {
+    .DrawerToggle {
+        display: none;
+    }
+}

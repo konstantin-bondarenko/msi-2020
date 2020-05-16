@@ -1,0 +1,20 @@
+.Category input[type='radio']{
+    position: absolute;
+    left: -9999px;
+}
+
+.Category label {
+    border: 1px solid rgb(241, 241, 241);
+    color: rgb(241, 241, 241);
+    padding: 0 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    min-width: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.Category input:checked ~ label{
+    background-color: rgb(241, 241, 241);
+    color: #000;
+}

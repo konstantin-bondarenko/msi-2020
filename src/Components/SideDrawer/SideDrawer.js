@@ -1,9 +1,9 @@
 import React from 'react';
 
 import classes from './SideDrawer.module.css';
-import Aux from '../../hoc/Aux';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Favorite from '../Favorite/Favorite';
+import DrawerToggle from './DrawerToggle/drawerToggle';
 
 const sideDrawer = (props) => {
     let attachedClasses = [classes.SideDrawer, classes.Closed]
@@ -11,12 +11,16 @@ const sideDrawer = (props) => {
         attachedClasses = [classes.SideDrawer, classes.Open]
     }
     return (
-        <Aux>
+        <>
             <Backdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')}>
-                <Favorite />
+                <div className={classes.Toggle}>
+                    <DrawerToggle clicked={props.clicked} show={props.open} />
+                    <span>Favourite</span>
+                </div>
+                <Favorite temp={props.temp} delete={props.delete} />
             </div>
-        </Aux>
+        </>
     )
 }
 
