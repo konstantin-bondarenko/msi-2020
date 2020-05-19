@@ -9,6 +9,7 @@ class Layout extends Component {
         data: [],
         temp: [],
         category: [],
+        matchUp: [],
         url: 'https://api.chucknorris.io/jokes/',
         path: 'random',
         search: false,
@@ -58,17 +59,11 @@ class Layout extends Component {
         fetch(this.state.url + this.state.path)
             .then(response => response.json())
             .then(response => {
-                const fetchData = []
+                const fetchData = this.state.matchUp
                 const ids = []
                 this.state.temp.map(item => ids.push(item.id))
                 for(let key in response.result){
-                    if(ids.indexOf(response.result[key].id) !== -1 && fetchData.length < 10){
-                        this.state.temp.map(item => {
-                            return item.id === response.result[key].id ?
-                                fetchData.unshift(item) : fetchData
-                            
-                        })
-                    }else if(fetchData.length < 10){
+                    if(ids.indexOf(response.result[key].id) === -1 && fetchData.length < 10){
                         fetchData.push({
                             ...response.result[key],
                             like: false
@@ -109,7 +104,8 @@ class Layout extends Component {
     onInputChangeSearch = (e) => {
         const keyword = e.target.value
         if (keyword.length >= 3 && this.state.search){
-            this.setState({path: `search?query=${keyword}`, popup: true}, this.getSearchFetch())
+            const arr = this.state.temp.filter(item=>item.value.includes(keyword))
+            this.setState({matchUp: arr, path: `search?query=${keyword}`, popup: true}, this.getSearchFetch())
         }
         else {this.setState({data: [], popup: false})}
     }
