@@ -5,10 +5,12 @@ import classes from '../Favorite/Favorite.module.css';
 const Favorite = props => {
     return (<>
         {props.temp.map(item=>{
-            const date = Math.floor((((Date.now() - new Date(item.updated_at).getTime())/1000)/60)/60)
+            const currentTime = new Date()
+            const jokeTime = new Date(item.updated_at.replace(/-/g,'/').replace('T',' ').replace(/\..*|\+.*/,''))
+            const date = Math.round((currentTime.getTime() - jokeTime.getTime()) / (1000*60*60))
             return (
                 <div className={classes.Favorite} key={item.id}>
-                    <div className={classes.Heart} onClick={()=>props.delete(item.id)}></div>
+                    <div className={classes.Heart} onClick={()=>props.delete(item.id, item)}></div>
                     <div className={classes.FavoriteContent}>
                         <div className={classes.Icon}></div>
                         <div className={classes.FavoriteJoke}>
