@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from '../Favorite/Favorite.module.css';
 
@@ -26,6 +27,11 @@ const Favorite = props => {
         })}
         </>
         )
+}
+
+Favorite.propTypes = {
+    temp: PropTypes.array,
+    delete: PropTypes.func
 }
 
 export default Favorite;

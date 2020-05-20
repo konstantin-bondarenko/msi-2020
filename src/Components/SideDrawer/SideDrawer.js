@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './SideDrawer.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
@@ -22,6 +23,14 @@ const sideDrawer = (props) => {
             </div>
         </>
     )
+}
+
+sideDrawer.propTypes = {
+    open: PropTypes.bool,
+    closed: PropTypes.func,
+    clicked: PropTypes.func,
+    delete: PropTypes.func,
+    temp: PropTypes.array
 }
 
 export default sideDrawer;

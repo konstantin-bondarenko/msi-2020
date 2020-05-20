@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import JokeBox from '../../Components/JokeBox/JokeBox';
 import Favorite from '../../Components/Favorite/Favorite';
 import DrawerToggle from '../../Components/SideDrawer/DrawerToggle/drawerToggle';
 import Category from '../../UI/Category/Category';
 import Warning from '../../UI/Warning/Warning';
+import Spinner from '../../UI/Spinner/Spinner';
 import classes from './MainScreen.module.css';
 
 
@@ -70,7 +72,7 @@ class MainScreen extends Component {
                     <div className={classes.Buttons}>
                         <button className={classes.Btn} onClick={this.props.getJokeHandler}>Get Chuck Joke</button>
                     </div>
-                    {renderElement}
+                    {this.props.loading ? <Spinner /> : renderElement}
                 </div>
                 <div className={classes.Favorite}>
                     <p>Favourite</p>
@@ -79,6 +81,27 @@ class MainScreen extends Component {
             </div>
         )
     }
+}
+
+MainScreen.propTypes = {
+    data: PropTypes.array,
+    category: PropTypes.array,
+
+    like: PropTypes.bool,
+    popup: PropTypes.bool,
+    search: PropTypes.bool,
+    categories: PropTypes.bool,
+    warning: PropTypes.bool,
+    loading: PropTypes.bool,
+
+    likeHandler: PropTypes.func,
+    deleteHandler: PropTypes.func,
+    getJokeHandler: PropTypes.func,
+    clicked: PropTypes.func,
+
+    onInputChange: PropTypes.func,
+    inInputChangeSearch: PropTypes.func,
+    onInputChangeCategory: PropTypes.func,
 }
 
 export default MainScreen;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './JokeBox.module.css';
 
@@ -33,6 +34,11 @@ const JokeBox = (props) =>{
         }
     </>
     )
+}
+
+JokeBox.propTypes = {
+    data: PropTypes.array,
+    getLike: PropTypes.func
 }
 
 export default JokeBox;

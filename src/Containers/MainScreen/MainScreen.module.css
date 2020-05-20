@@ -1,6 +1,7 @@
 .Main{
     display: flex;
     justify-content: space-between;
+    min-height: 800px;
 }
 .Main p {
     font-size: 22px;
