@@ -4,6 +4,7 @@ import JokeBox from '../../Components/JokeBox/JokeBox';
 import Favorite from '../../Components/Favorite/Favorite';
 import DrawerToggle from '../../Components/SideDrawer/DrawerToggle/drawerToggle';
 import Category from '../../UI/Category/Category';
+import Warning from '../../UI/Warning/Warning';
 import classes from './MainScreen.module.css';
 
 
@@ -20,6 +21,7 @@ class MainScreen extends Component {
         if(this.props.search){
             search = 
             <div>
+                {this.props.warning ? <Warning text={'Enter at least 3 letters!'} /> : ''}
                 <input 
                     className={classes.SearchInput} 
                     type='text' placeholder='Free text search...'
@@ -54,6 +56,7 @@ class MainScreen extends Component {
                         <div>
                             <input type='radio' name='site' value='categories' id='categories'/>
                             <label className={classes.InputsLabel} htmlFor='categories'>From categories</label>
+                            {this.props.categories && this.props.warning ? <Warning text={'Choose one of these categories'} /> : ''}
                             {categories}
                         </div>
                         <div className={classes.Search}>

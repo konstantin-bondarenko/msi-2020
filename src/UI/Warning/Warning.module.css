@@ -1,0 +1,11 @@
+.Warning{
+    background-color: rgb(241, 241, 241);
+    border-radius: 7px;
+    padding: 0 7px;
+    box-sizing: border-box;
+}
+.Warning p {
+    font-size: 12px;
+    margin: 10px 0 0 0;
+    color: rgb(173,173,173);
+}

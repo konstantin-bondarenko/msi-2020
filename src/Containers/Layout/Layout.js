@@ -16,6 +16,9 @@ class Layout extends Component {
         categories: false,
         popup: false,
         like: false,
+        warning: false,
+        active: false,
+        words: ''
     }
 
     componentDidMount(){
@@ -61,8 +64,8 @@ class Layout extends Component {
             .then(response => {
                 const fetchData = this.state.matchUp
                 const ids = []
-                this.state.temp.map(item => ids.push(item.id))
                 for(let key in response.result){
+                    fetchData.map(item => ids.push(item.id))
                     if(ids.indexOf(response.result[key].id) === -1 && fetchData.length < 10){
                         fetchData.push({
                             ...response.result[key],
@@ -77,7 +80,17 @@ class Layout extends Component {
     // FETCHING DATA BUTTON
 
     getJokeHandler = () => {
-        if(this.state.search) this.setState({data: []}, this.getSearchFetch())
+        if(this.state.search){
+            if(this.state.words.length < 3){
+                this.setState({data: []})
+                return this.warningToggle()
+            }else{
+                return this.setState({data: []}, this.getSearchFetch())
+            }
+        } 
+        if(this.state.categories && !this.state.active){
+            this.warningToggle()
+        }
         else this.getFetch()
     }
 
@@ -86,11 +99,11 @@ class Layout extends Component {
     onInputChange = (e) => {
         switch(e.target.value){
             case('random'):
-                return this.setState({ path: e.target.value, search: false, categories: false})
+                return this.setState({ path: e.target.value, search: false, categories: false, active: false})
             case('categories'):
                 return this.setState({ categories: true, search: false})
             case('search'):
-                return this.setState({ search: true, categories: false})
+                return this.setState({ search: true, categories: false, active: false})
             default: 
                 return this.state.path
         }
@@ -98,16 +111,18 @@ class Layout extends Component {
 
     onInputChangeCategory = (e) => {
         let query = e.target.value;
-        return this.setState({ path: `random?category=${query}`})
+        return this.setState({ path: `random?category=${query}`, active: true})
     }
 
     onInputChangeSearch = (e) => {
-        const keyword = e.target.value
+        const keyword = e.target.value.toLowerCase()
         if (keyword.length >= 3 && this.state.search){
-            const arr = this.state.temp.filter(item=>item.value.includes(keyword))
-            this.setState({matchUp: arr, path: `search?query=${keyword}`, popup: true}, this.getSearchFetch())
+            const arr = this.state.temp.filter(item=>item.value.toLowerCase().includes(keyword))
+            this.setState({matchUp: arr, path: `search?query=${keyword}`, popup: true, words: keyword}, this.getSearchFetch())
         }
-        else {this.setState({data: [], popup: false})}
+        else {
+            this.setState({data: [], popup: false, path: 'random', words: keyword})
+        }
     }
 
 
@@ -155,6 +170,11 @@ class Layout extends Component {
         this.setState( ( prevState ) => {
             return { showSideDrawer: !prevState.showSideDrawer }
         })
+    }
+
+    warningToggle = () => {
+        this.setState({warning: true})
+        setTimeout(() => this.setState({warning: false}), 1000)
     }
 
     render () {
