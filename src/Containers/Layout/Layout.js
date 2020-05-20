@@ -99,9 +99,9 @@ class Layout extends Component {
     onInputChange = (e) => {
         switch(e.target.value){
             case('random'):
-                return this.setState({ path: e.target.value, search: false, categories: false, active: false})
+                return this.setState({ path: e.target.value, search: false, categories: false, active: false, words: ''})
             case('categories'):
-                return this.setState({ categories: true, search: false})
+                return this.setState({ categories: true, search: false, words: ''})
             case('search'):
                 return this.setState({ search: true, categories: false, active: false})
             default: 
